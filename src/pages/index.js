@@ -1,15 +1,26 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Iframe from 'react-iframe';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import {
+  //makeStyles,
+  // useStyles,
+  ThemeProvider,
+  createMuiTheme,
+} from '@material-ui/core/styles';
 
 const IndexPage = () => {
-  const classes = useStyles();
-  render(
+  // const classes = useStyles();
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        500: '#1183DA',
+      },
+    },
+  });
+  return (
     <Layout>
       <SEO title="Home" />
       <p>
@@ -23,14 +34,18 @@ const IndexPage = () => {
         .
       </p>
       <div>
-        <Button
-          variant="contained"
-          color="primary"
-          href="https://airtable.com/addBaseFromShare/shrXlEo1C9eC2Wykh?utm_source=airtable_embedded_application"
-          target="_blank"
-        >
-          Copy base
-        </Button>
+        <ThemeProvider theme={theme}>
+          <Button
+            variant="contained"
+            color="primary"
+            href="https://airtable.com/addBaseFromShare/shrXlEo1C9eC2Wykh?utm_source=airtable_embedded_application"
+            target="_blank"
+          >
+            Copy base
+          </Button>
+          <br />
+          <br />
+        </ThemeProvider>
       </div>
       <Iframe
         class="airtable-embed"
